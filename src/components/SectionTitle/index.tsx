@@ -13,6 +13,6 @@ function SectionTitle({ title, description }: SectionTitleProps) {
       {description && <h2>{description}</h2>}
     </Container>
   );
-};
+}
 
 export default SectionTitle;

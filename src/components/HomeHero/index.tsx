@@ -11,28 +11,32 @@ function HomeHero() {
           <h1>Hi</h1>
           <h2>I am Guilherme</h2>
         </TextContainer>
-        
+
         <InfosContainer>
           <CodeItem>
-          <span className='comment'>{'\u003C'}-- Resume --{'\u003E'}</span>
-            <span className='purple'>Infos</span> {'\u007B'}
+            <span className="comment">
+              {'\u003C'}-- Resume --{'\u003E'}
+            </span>
+            <span className="purple">Infos</span> {'\u007B'}
             <div>
-              Nome: <span className='blue'>Guilherme,</span>
+              Nome: <span className="blue">Guilherme,</span>
             </div>
             <div>
-              Sobrenome: <span className='blue'>Henrique,</span>
+              Sobrenome: <span className="blue">Henrique,</span>
             </div>
             {'\u007D'}
           </CodeItem>
 
           <CodeItem>
-          <span className='comment'>{'\u003C'}-- Career --{'\u003E'}</span>
-            <span className='purple'>Infos</span> {'\u007B'}
+            <span className="comment">
+              {'\u003C'}-- Career --{'\u003E'}
+            </span>
+            <span className="purple">Infos</span> {'\u007B'}
             <div>
-              Occupation: <span className='blue'>Front-end Developer,</span>
+              Occupation: <span className="blue">Front-end Developer,</span>
             </div>
             <div>
-              Experience: <span className='blue'>4 years,</span>
+              Experience: <span className="blue">4 years,</span>
             </div>
             {'\u007D'}
           </CodeItem>
@@ -40,6 +44,6 @@ function HomeHero() {
       </div>
     </Container>
   );
-};
+}
 
 export default HomeHero;
