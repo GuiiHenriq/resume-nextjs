@@ -5,6 +5,7 @@ import Experiences from '../components/Experiences';
 import Projects from '../components/Projects';
 import Knowledge from '../components/Knowledge';
 import Contact from '../components/Contact';
+import Footer from '../components/Footer';
 
 export default function Home() {
   return (
@@ -18,6 +19,8 @@ export default function Home() {
         <Knowledge />
         <Contact />
       </main>
+
+      <Footer />
     </HomeContainer>
   );
 }
