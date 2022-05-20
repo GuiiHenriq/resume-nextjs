@@ -9,9 +9,24 @@ function Projects() {
       <SectionTitle title="Latest projects" />
 
       <section>
-        <ProjectItem title="Project 01" type="Website" slug="teste-01" img="https://www.minhaoperadora.com.br/wp-content/uploads/2019/08/Site-antigo-da-Vivo-1024x516.jpg" />
-        <ProjectItem title="Project 02" type="Website" slug="teste-02" img="https://www.minhaoperadora.com.br/wp-content/uploads/2019/08/Site-antigo-da-Vivo-1024x516.jpg" />
-        <ProjectItem title="Project 03" type="Website" slug="teste-03" img="https://www.minhaoperadora.com.br/wp-content/uploads/2019/08/Site-antigo-da-Vivo-1024x516.jpg" />
+        <ProjectItem
+          title="Project 01"
+          type="Website"
+          slug="teste-01"
+          img="https://www.minhaoperadora.com.br/wp-content/uploads/2019/08/Site-antigo-da-Vivo-1024x516.jpg"
+        />
+        <ProjectItem
+          title="Project 02"
+          type="Website"
+          slug="teste-02"
+          img="https://www.minhaoperadora.com.br/wp-content/uploads/2019/08/Site-antigo-da-Vivo-1024x516.jpg"
+        />
+        <ProjectItem
+          title="Project 03"
+          type="Website"
+          slug="teste-03"
+          img="https://www.minhaoperadora.com.br/wp-content/uploads/2019/08/Site-antigo-da-Vivo-1024x516.jpg"
+        />
       </section>
 
       <button type="button">
@@ -21,6 +36,6 @@ function Projects() {
       </button>
     </Container>
   );
-};
+}
 
 export default Projects;
