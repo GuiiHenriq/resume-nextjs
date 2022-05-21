@@ -3,30 +3,36 @@ import { Container } from './styles';
 import SectionTitle from '../SectionTitle';
 import ProjectItem from './ProjectItem';
 
-function Projects() {
+interface IProject {
+  slug: string;
+  title: string;
+  type: string;
+  description: string;
+  url: string;
+  thumbnail: string;
+}
+
+interface ProjetcsProps {
+  projects: IProject[];
+}
+
+function Projects({ projects }: ProjetcsProps) {
+  console.log(projects);
+
   return (
     <Container>
       <SectionTitle title="Latest projects" />
 
       <section>
-        <ProjectItem
-          title="Project 01"
-          type="Website"
-          slug="teste-01"
-          img="https://www.minhaoperadora.com.br/wp-content/uploads/2019/08/Site-antigo-da-Vivo-1024x516.jpg"
-        />
-        <ProjectItem
-          title="Project 02"
-          type="Website"
-          slug="teste-02"
-          img="https://www.minhaoperadora.com.br/wp-content/uploads/2019/08/Site-antigo-da-Vivo-1024x516.jpg"
-        />
-        <ProjectItem
-          title="Project 03"
-          type="Website"
-          slug="teste-03"
-          img="https://www.minhaoperadora.com.br/wp-content/uploads/2019/08/Site-antigo-da-Vivo-1024x516.jpg"
-        />
+        {projects.slice(0, 3).map(project => (
+          <ProjectItem
+            key={project.slug}
+            title={project.title}
+            type={project.type}
+            slug={project.slug}
+            img={project.thumbnail}
+          />
+        ))}
       </section>
 
       <button type="button">
