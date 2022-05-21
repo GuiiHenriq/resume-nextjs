@@ -1,40 +1,63 @@
+import { GetStaticProps } from 'next';
+import Prismic from '@prismicio/client';
 import Header from '../../components/Header';
 import ProjectCard from '../../components/ProjectCard';
 import { ProjectsContainer } from '../../styles/ProjectsStyles';
+import { getPrismicClient } from '../../services/prismic';
 
-export default function Projects() {
+interface IProject {
+  slug: string;
+  title: string;
+  type: string;
+  description: string;
+  url: string;
+  thumbnail: string;
+}
+
+interface ProjectProps {
+  projects: IProject[];
+}
+
+export default function Projects({ projects }: ProjectProps) {
   return (
     <ProjectsContainer>
       <Header />
       <main className="container">
-        <ProjectCard
-          title="Project #1"
-          type="website"
-          img="https://www.minhaoperadora.com.br/wp-content/uploads/2019/08/Site-antigo-da-Vivo-1024x516.jpg"
-          slug="teste-01"
-        />
-
-        <ProjectCard
-          title="Project #2"
-          type="website"
-          img="https://www.minhaoperadora.com.br/wp-content/uploads/2019/08/Site-antigo-da-Vivo-1024x516.jpg"
-          slug="teste-02"
-        />
-
-        <ProjectCard
-          title="Project #3"
-          type="website"
-          img="https://www.minhaoperadora.com.br/wp-content/uploads/2019/08/Site-antigo-da-Vivo-1024x516.jpg"
-          slug="teste-03"
-        />
-
-        <ProjectCard
-          title="Project #4"
-          type="website"
-          img="https://www.minhaoperadora.com.br/wp-content/uploads/2019/08/Site-antigo-da-Vivo-1024x516.jpg"
-          slug="teste-04"
-        />
+        {projects.map(project => (
+          <ProjectCard
+            key={project.slug}
+            title={project.title}
+            type={project.type}
+            img={project.thumbnail}
+            slug={project.slug}
+          />
+        ))}
       </main>
     </ProjectsContainer>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const prismic = getPrismicClient();
+
+  const projectResponse = await prismic.query(
+    [Prismic.Predicates.at('document.type', 'projects')],
+    { orderings: '[document.first_publication_date desc]' }
+  );
+
+  const projects = projectResponse.results.map(project => ({
+    slug: project.uid,
+    title: project.data.title,
+    type: project.data.type,
+    description: project.data.description,
+    url: project.data.url.url,
+    thumbnail: project.data.thumbnail.url
+  }));
+
+  return {
+    props: {
+      projects
+    },
+    revalidate: 86400
+  };
+};
