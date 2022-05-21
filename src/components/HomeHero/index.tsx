@@ -3,7 +3,7 @@ import Avatar from '../../assets/people.webp';
 
 function HomeHero() {
   return (
-    <Container>
+    <Container data-aos="fade-up">
       <img src={Avatar} alt="Guilherme Henrique" />
 
       <div>
@@ -13,7 +13,7 @@ function HomeHero() {
         </TextContainer>
 
         <InfosContainer>
-          <CodeItem>
+          <CodeItem data-aos="zoom-in">
             <span className="comment">
               {'\u003C'}-- Resume --{'\u003E'}
             </span>
@@ -27,7 +27,7 @@ function HomeHero() {
             {'\u007D'}
           </CodeItem>
 
-          <CodeItem>
+          <CodeItem data-aos="zoom-in">
             <span className="comment">
               {'\u003C'}-- Career --{'\u003E'}
             </span>
