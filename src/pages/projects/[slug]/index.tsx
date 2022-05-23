@@ -1,6 +1,7 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Prismic from '@prismicio/client';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import Header from '../../../components/Header';
 import ProjectBanner from '../../../components/ProjectBanner';
 import { ProjectContainer } from '../../../styles/ProjectStyles';
@@ -27,6 +28,16 @@ export default function Project({ project }: ProjetcProps) {
 
   return (
     <ProjectContainer>
+      <Head>
+        <title>{project.title} - Resume NextJS</title>
+
+        <meta property="og:image" content={project.thumbnail} />
+        <meta property="og:image:secure_url" content={project.thumbnail} />
+        <meta name="twitter:image" content={project.thumbnail} />
+        <meta name="twitter:image:src" content={project.thumbnail} />
+        <meta property="og:description" content={project.description} />
+      </Head>
+
       <Header />
       <ProjectBanner
         title={project.title}
