@@ -22,7 +22,8 @@ function Projects({ projects }: ProjetcsProps) {
       <SectionTitle title="Latest projects" />
 
       <section>
-        {projects.slice(0, 3).map(project => (
+        {/* {projects.slice(0, 3).map(project => ( */}
+        {projects.map(project => (
           <ProjectItem
             key={project.slug}
             title={project.title}
