@@ -2,10 +2,10 @@ import Link from 'next/link';
 import { Container } from './styles';
 
 interface ProjectItemProps {
-  title: String;
-  type: String;
-  img: String;
-  slug: String;
+  title: string;
+  type: string;
+  img: string;
+  slug: string;
 }
 
 function ProjectItem({ title, type, img, slug }: ProjectItemProps) {

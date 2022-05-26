@@ -1,12 +1,10 @@
-import { GetStaticProps, GetStaticPaths } from 'next';
-import Prismic from '@prismicio/client';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Header from '../../../components/Header';
 import ProjectBanner from '../../../components/ProjectBanner';
 import { ProjectContainer } from '../../../styles/ProjectStyles';
-import { getPrismicClient } from '../../../services/prismic';
 import LoadingScreen from '../../../components/LoadingScreen';
+import { data } from '../../../services/content';
 
 interface IProject {
   slug: string;
@@ -56,44 +54,20 @@ export default function Project({ project }: ProjetcProps) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const prismic = getPrismicClient();
-
-  const projects = await prismic.query([
-    Prismic.predicates.at('document.type', 'projects')
-  ]);
-
-  const paths = projects.results.map(project => ({
-    params: {
-      slug: project.uid
-    }
-  }));
-
-  return {
-    paths,
-    fallback: true
-  };
-};
-
-export const getStaticProps: GetStaticProps = async context => {
-  const prismic = getPrismicClient();
-  const { slug } = context.params;
-
-  const response = await prismic.getByUID('projects', String(slug), {});
-
-  const project = {
-    slug: response.uid,
-    title: response.data.title,
-    type: response.data.type,
-    description: response.data.description,
-    url: response.data.url.url,
-    thumbnail: response.data.thumbnail.url
-  };
+export const getStaticProps = async ({ params }) => {
+  const content = data.filter(p => p.slug === params.slug);
 
   return {
     props: {
-      project
-    },
-    revalidate: 86400
+      project: content[0]
+    }
   };
+};
+
+export const getStaticPaths = async () => {
+  const paths = data.map(item => ({
+    params: { slug: item.slug }
+  }));
+
+  return { paths, fallback: false };
 };
