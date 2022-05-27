@@ -1,5 +1,4 @@
 import { Container, TextContainer, InfosContainer, CodeItem } from './styles';
-// @ts-ignore
 import Avatar from '../../assets/people.webp';
 
 function HomeHero() {
