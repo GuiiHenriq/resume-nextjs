@@ -1,9 +1,9 @@
 import { Container } from './styles';
 
 interface ProjectBannerProps {
-  title: String;
-  type: String;
-  img: String;
+  title: string;
+  type: string;
+  img: string;
 }
 
 function ProjectBanner({ title, type, img }: ProjectBannerProps) {

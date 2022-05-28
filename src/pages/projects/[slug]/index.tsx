@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Header from '../../../components/Header';
 import ProjectBanner from '../../../components/ProjectBanner';
 import { ProjectContainer } from '../../../styles/ProjectStyles';
-import LoadingScreen from '../../../components/LoadingScreen';
+// import LoadingScreen from '../../../components/LoadingScreen';
 import { data } from '../../../services/content';
 
 interface IProject {
@@ -20,9 +20,9 @@ interface ProjetcProps {
 }
 
 export default function Project({ project }: ProjetcProps) {
-  const router = useRouter;
+  // const router = useRouter;
 
-  if (router.isFallback) return <LoadingScreen />;
+  // if (router.isFallback) return <LoadingScreen />;
 
   return (
     <ProjectContainer>
